@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>沖縄ダイニングバー リップル / 松山・若狭店</title>
+    <title>TESTPAGE</title>
 
 	<meta name="description" content="RIPPLE-リップル- 那覇市にある松山店・若狭店は、「仕事帰りにサクッと飲みたい」「友達と朝まで楽しみたい」「飲みながら食事もしたい」「ダーツで遊びたい」等々、365日どんなシチュエーションでも対応可能なダイニングバー。個室カラオケルーム完備。お忍びデートや団体利用が可能！お気軽にご来店ください。">
 
@@ -24,13 +24,25 @@
 	<base href="https://ripple-okinawa.jp">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.css">
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
+    <!-- <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png"> -->
     <link rel="icon" type="image/png" href="android-touch-icon.png" sizes="192x192">
+
+
+<style>
+
+	.swiper-container{
+		width:auto;
+		height: 1000px; /* もし画像がコンテナよりも小さい場合、自動的に中央寄せされます */
+		margin:0%
+	}
+
+
+</style>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148818248-1"></script>
@@ -46,19 +58,19 @@
 <body>
 <div id="wrap" class="index">
     <header>
-				<div class="main_view">
+		<div class="main_view">
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="images/common/main01.jpg" alt="RIPPLE1"></div>
+					<div class="swiper-slide"><img src="{{asset('storage/img/background.jpg')}}" alt="RIPPLE1"></div>
 					<div class="swiper-slide"><img src="images/common/main02.jpg" alt="RIPPLE2"></div>
 				</div>
 			</div>
 			<div class="box">
-            	<h1 class="logo">
+            	<!-- <h1 class="logo">
 					<a href="./" class="over">
 						<img src="images/common/logo.png" alt="沖縄ダイニングバー リップル">
 					</a>
-				</h1>
+				</h1> -->
 			</div>
 		</div>
 			<nav class="pc_nav">
@@ -77,7 +89,7 @@
 	<div class="sp_nav">
 		<nav id="slide_menu">
 		    <ul>
-				<li><a href="./">HOME</a></li>
+				<li><a href="route('homepage.index')">HOME</a></li>
 				<li><a href="/menu">MENU</a></li>
 				<li><a href="/reserve">RESERVE</a></li>
 				<li><a href="/contact">CONTACT</a></li>
@@ -88,7 +100,7 @@
 		<div id="ham_btn"><span class="inner"><span class="bar">メニュー</span></span></div>
 	</div><!-- /g_nav -->
 
-	<nav id="language">
+	<!-- <nav id="language">
 		<div class="nav_menu">
 			<div class="list">Language</div>
 			<ul>
@@ -97,7 +109,7 @@
 				<li><a href="/china">Chinese</a></li>
 			</ul>
 		</div>
-	</nav>
+	</nav> -->
 
 
 	

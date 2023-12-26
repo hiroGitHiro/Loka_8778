@@ -7,9 +7,11 @@ use App\Models\MShop;
 use App\Models\MShopMenu;
 use App\Models\MTenpo_gazo;
 
+
 class ShopInformationController extends Controller
 {
     public function index(Request $request){
+        
         
         $M_shop = MShop::select(
             'm_shop.shop_id',
@@ -71,7 +73,8 @@ class ShopInformationController extends Controller
         ->get();
 
 
-        return view('homepage.index',compact('M_shop','M_foodmenu','M_drinkmenu','MTenpo_gazo'));
+        
+        return view('home.index',compact('M_shop','M_foodmenu','M_drinkmenu','MTenpo_gazo'));
 
 
     }

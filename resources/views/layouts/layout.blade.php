@@ -1,1334 +1,313 @@
+<!doctype html>
 
-<!DOCTYPE html>
 <html lang="ja">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3GKMDK4KT8"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3GKMDK4KT8');
-</script>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>@yield('title')</title>
+
+    <link rel="canonical" href="https://getbootstrap.jp/docs/5.3/examples/carousel/">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
-	<meta charset="UTF-8">
-	<title>HIROROGU</title>
-	
-	<link rel="icon" href="/assets/favicon.ico">
-	<link rel="stylesheet" href="{{asset('storage/css/style.css')}}">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
-        <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
+
+    
     <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-</head>
 
-
-<style>
-	html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    font-size: 100%;
-    vertical-align: baseline
-}
-
-html {
-    line-height: 1
-}
-
-ol,ul {
-    list-style: none
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0
-}
-
-caption,th,td {
-    text-align: left;
-    font-weight: normal;
-    vertical-align: middle
-}
-
-q,blockquote {
-    quotes: none
-}
-
-q:before,q:after,blockquote:before,blockquote:after {
-    content: "";
-    content: none
-}
-
-a img {
-    border: none
-}
-
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary {
-    display: block
-}
-
-* {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box
-}
-
-.font-noto-serif,body {
-    font-family: "Noto Serif JP",serif
-}
-
-body {
-    min-width: 320px;
-    font-weight: 500;
-    color: #232323;
-    font-size: 16px
-}
-
-body.active {
-    overflow-y: hidden
-}
-
-.l-section {
-    margin-top: 60px
-}
-
-@media(min-width: 768px) {
-    .l-section {
-        margin-top:120px
-    }
-}
-
-.l-section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    line-height: 1.5;
-    text-align: center;
-    position: relative
-}
-
-@media(min-width: 768px) {
-    .l-section h2 {
-        font-size:26px;
-        margin-bottom: 30px
-    }
-}
-
-.l-section h2:after {
-    content: "";
-    display: block;
-    width: 30px;
-    height: 3px;
-    background-color: #b51c25;
-    border-radius: 4px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px
-}
-
-@media(min-width: 768px) {
-    .l-section h2:after {
-        width:50px;
-        height: 5px
-    }
-}
-
-.l-section .lead {
-    text-align: center;
-    line-height: 1.75;
-    font-size: 20px;
-    padding-bottom: 15px
-}
-
-@media(min-width: 768px) {
-    .l-section .lead {
-        font-size:22px;
-        padding-bottom: 20px
-    }
-}
-
-img {
-    vertical-align: bottom;
-    max-width: 100%;
-    height: auto
-}
-
-a {
-    text-decoration: none
-}
-
-section,main {
-    display: block
-}
-
-.l-main {
-    padding-top: 50px
-}
-
-@media(min-width: 992px) {
-    .l-main {
-        padding-top:110px
-    }
-}
-
-.pc-view {
-    display: none
-}
-
-@media(min-width: 768px) {
-    .pc-view {
-        display:block
-    }
-}
-
-.tb-view {
-    display: block
-}
-
-@media(min-width: 992px) {
-    .tb-view {
-        display:none
-    }
-}
-
-.sp-view {
-    display: block
-}
-
-@media(min-width: 768px) {
-    .sp-view {
-        display:none
-    }
-}
-
-.ov-h {
-    overflow: hidden
-}
-
-.l-header {
-    width: 100%;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    background-color: honeydew;
-    -webkit-transition: .2s;
-    transition: .2s;
-    -webkit-box-shadow: 0 0 6px 4px rgba(0,0,0,.2);
-    box-shadow: 0 0 6px 4px rgba(0,0,0,.2)
-}
-
-@media(min-width: 992px) {
-    .l-header {
-        -webkit-box-shadow:0 0 6px 4px rgba(0,0,0,0);
-        box-shadow: 0 0 6px 4px rgba(0,0,0,0)
-    }
-}
-
-.l-header.scroll {
-    -webkit-box-shadow: 0 0 6px 4px rgba(0,0,0,.2);
-    box-shadow: 0 0 6px 4px rgba(0,0,0,.2)
-}
-
-.l-header__inner {
-    width: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 5px 15px
-}
-
-@media(min-width: 992px) {
-    .l-header__inner {
-        padding:10px 10px;
-        max-width: 1200px;      
-        margin-left: auto;
-        margin-right: auto
-    }
-}
-
-.l-header__logo {
-    width: 50px;
-    margin: auto
-}
-
-@media(min-width: 1200px) {
-    .l-header__logo {
-        margin:0;
-        width: 110px
-    }
-}
-
-.l-header__logo a {
-    display: block
-}
-
-.l-global-navi {
-    display: none
-}
-
-@media(min-width: 992px) {
-    .l-global-navi {
-        display:-webkit-box !important;
-        display: -webkit-flex !important;
-        display: -ms-flexbox !important;
-        display: flex !important;
-        position: relative;
-        z-index: 2
-    }
-}
-
-.l-global-navi__list {
-    padding-top: 70px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    background-color: #fff
-}
-
-@media(min-width: 992px) {
-    .l-global-navi__list {
-        padding-top:0;
-        position: static;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: end;
-        -webkit-justify-content: flex-end;
-        -ms-flex-pack: end;
-        justify-content: flex-end;
-        margin-right: 10px
-    }
-}
-
-.l-global-navi__list li {
-    text-align: center
-}
-
-@media(min-width: 992px) {
-    .l-global-navi__list li {
-        margin-right:30px
-    }
-}
-
-.l-global-navi__list li:last-child {
-    margin-right: 0
-}
-
-.l-global-navi__list li:last-child a {
-    border-bottom: none
-}
-
-@media(min-width: 992px) {
-    .l-global-navi__list li.sns {
-        display:none
-    }
-}
-
-.l-global-navi__list li.sns a {
-    font-size: 40px;
-    color: #b51c25
-}
-
-.l-global-navi__list a {
-    color: #232323;
-    font-size: 18px;
-    -webkit-transition: .2s;
-    transition: .2s;
-    position: relative;
-    border-bottom: 1px dashed #232323;
-    padding: 30px 0;
-    display: block
-}
-
-@media(min-width: 992px) {
-    .l-global-navi__list a {
-        border-bottom:none;
-        padding: 0;
-        display: inline
-    }
-}
-
-@media(min-width: 992px) {
-    .l-global-navi__list a:before {
-        content:"";
-        width: 0;
-        height: 2px;
-        background-color: #b51c25;
-        position: absolute;
-        bottom: -7px;
-        left: 0;
-        -webkit-transition: .4s;
-        transition: .4s;
-        opacity: 0
-    }
-}
-
-@media(min-width: 992px) {
-    .l-global-navi__list a:hover {
-        color:#b51c25
-    }
-
-    .l-global-navi__list a:hover:before {
-        width: 100%;
-        opacity: 1
-    }
-}
-
-.l-hamburger {
-    position: absolute;
-    top: 0;
-    right: 15px;
-    width: 30px;
-    height: 100%;
-    cursor: pointer;
-    -webkit-transition: .2s;
-    transition: .2s
-}
-
-@media(min-width: 992px) {
-    .l-hamburger {
-        display:none
-    }
-}
-
-.l-hamburger__item {
-    width: 100%;
-    height: 3px;
-    border-radius: 2px;
-    background-color: #232323;
-    position: absolute;
-    left: 0;
-    -webkit-transition: .2s;
-    transition: .2s;
-    margin: auto
-}
-
-.l-hamburger__item.e-first {
-    top: 15px
-}
-
-.l-hamburger__item.e-second {
-    top: 0;
-    bottom: 0
-}
-
-.l-hamburger__item.e-third {
-    top: 33px
-}
-
-.l-hamburger.active .l-hamburger__item.e-first {
-    top: 25px;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg)
-}
-
-.l-hamburger.active .l-hamburger__item.e-second {
-    opacity: 0
-}
-
-.l-hamburger.active .l-hamburger__item.e-third {
-    top: 25px;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg)
-}
-
-.l-navigation-open-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 120%;
-    z-index: -10;
-    opacity: 0;
-    background-color: rgba(0,0,0,.9)
-}
-
-@media(min-width: 992px) {
-    .l-navigation-open-bg {
-        display:none !important
-    }
-}
-
-.l-navigation-open-bg.active {
-    z-index: 90;
-    opacity: 1
-}
-
-footer {
-    margin-top: 100px;
-    display: block;
-    text-align: center;
-    /* background-color: #b51c25; */
-    background-color: honeydew;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 20px 10px;
-    color: #fff
-}
-
-@media(min-width: 768px) {
-    footer {
-        margin-top:200px
-    }
-}
-
-.page-top {
-    position: fixed;
-    right: -40px;
-    bottom: 60px;
-    font-size: 40px;
-    color: #b51c25;
-    -webkit-transition: .2s;
-    transition: .2s;
-    opacity: 0
-}
-
-@media(min-width: 768px) {
-    .page-top {
-        bottom:100px
-    }
-}
-
-.page-top.active {
-    right: 20px;
-    opacity: 1;
-    -webkit-transition: .8s;
-    transition: .8s
-}
-
-@media(min-width: 768px) {
-    .page-top.active {
-        right:40px
-    }
-}
-
-@media(min-width: 992px) {
-    .page-top:hover {
-        opacity:.8
-    }
-}
-
-.l-slider img {
-    width: 100%;
-    max-width: 100%
-}
-
-.l-slider .slick-dots {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: right;
-    text-align: center;
-    position: absolute;
-    bottom: 10px
-}
-
-.l-slider .slick-dots li {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin: 0 5px;
-    border-radius: 50%;
-    background-color: rgba(204,204,204,.8);
-    -webkit-transition: .2s;
-    transition: .2s;
-    cursor: pointer
-}
-
-.l-slider .slick-dots li.slick-active {
-    background-color: #b51c25
-}
-
-.l-slider .slick-dots button {
-    display: none
-}
-
-.l-wrap {
-    display: block;
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    padding-left: 20px;
-    padding-right: 20px
-}
-
-@media(min-width: 1200px) {
-    .l-wrap {
-        padding-left:0;
-        padding-right: 0
-    }
-}
-
-.slick-slider {
-    position: relative;
-    display: block;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-    -webkit-tap-highlight-color: rgba(0,0,0,0)
-}
-
-.slick-list {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0
-}
-
-.slick-list:focus {
-    outline: none
-}
-
-.slick-list.dragging {
-    cursor: pointer;
-    cursor: hand
-}
-
-.slick-slider .slick-track,.slick-slider .slick-list {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0)
-}
-
-.slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: block
-}
-
-.slick-track:before,.slick-track:after {
-    display: table;
-    content: ""
-}
-
-.slick-track:after {
-    clear: both
-}
-
-.slick-loading .slick-track {
-    visibility: hidden
-}
-
-.slick-slide {
-    display: none;
-    float: left;
-    height: 100%;
-    min-height: 1px
-}
-
-[dir=rtl] .slick-slide {
-    float: right
-}
-
-.slick-slide img {
-    display: block
-}
-
-.slick-slide.slick-loading img {
-    display: none
-}
-
-.slick-initialized .slick-slide {
-    display: block
-}
-
-.slick-loading .slick-slide {
-    visibility: hidden
-}
-
-.slick-vertical .slick-slide {
-    display: block;
-    height: auto;
-    border: 1px solid rgba(0,0,0,0)
-}
-
-.slick-arrow.slick-hidden {
-    display: none
-}
-
-.slick-dots button {
-    background-color: rgba(0,0,0,0);
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none
-}
-
-.is-home .l-kv {
-    text-align: center
-}
-
-.is-home .l-lead {
-    font-size: 26px;
-    padding: 40px 0 0;
-    line-height: 1.5;
-    text-align: center;
-    font-weight: bold
-}
-
-@media(min-width: 768px) {
-    .is-home .l-lead {
-        margin-bottom:-40px;
-        font-size: 30px;
-        padding: 80px 0 0
-    }
-}
-
-.is-home .l-about .img {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto
-}
-
-@media(min-width: 768px) {
-    .is-home .l-about .img {
-        text-align:center
-    }
-}
-
-.is-home .l-about .img p {
-    padding-top: 10px;
-    font-size: 16px;
-    line-height: 1.75
-}
-
-@media(min-width: 768px) {
-    .is-home .l-about .img p {
-        padding-top:10px;
-        font-size: 18px
-    }
-}
-
-.is-home .l-point .l-box {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px
-}
-
-@media(min-width: 768px) {
-    .is-home .l-point .l-box {
-        display:-webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
-        margin-bottom: 40px
-    }
-}
-
-.is-home .l-point .l-box:last-child {
-    margin-bottom: 0
-}
-
-.is-home .l-point .l-box.reverse {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-    -webkit-flex-direction: row-reverse;
-    -ms-flex-direction: row-reverse;
-    flex-direction: row-reverse
-}
-
-@media(min-width: 768px) {
-    .is-home .l-point .l-box .img {
-        width:50%
-    }
-}
-
-.is-home .l-point .l-box .text {
-    font-size: 16px;
-    line-height: 2;
-    padding-top: 5px
-}
-
-@media(min-width: 768px) {
-    .is-home .l-point .l-box .text {
-        padding-top:0;
-        width: 47%
-    }
-}
-
-.is-home .l-menu section {
-    background-color: #f5f5f5;
-    margin-bottom: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    line-height: 1.75;
-    padding-left: 15px;
-    padding-right: 15px
-}
-
-@media(min-width: 768px) {
-    .is-home .l-menu section {
-        margin-bottom:40px;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        padding-left: 0;
-        padding-right: 0
-    }
-}
-
-.is-home .l-menu section:last-child {
-    margin-bottom: 0
-}
-
-.is-home .l-menu section h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    text-decoration: underline;
-    text-align: center
-}
-
-@media(min-width: 768px) {
-    .is-home .l-menu section h3 {
-        font-size:30px;
-        margin-bottom: 20px
-    }
-}
-
-.is-home .l-menu section .box {
-    width: 100%;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 15px
-}
-
-@media(min-width: 768px) {
-    .is-home .l-menu section .box {
-        margin-bottom:40px
-    }
-}
-
-.is-home .l-menu section .box:last-child {
-    margin-bottom: 0
-}
-
-.is-home .l-menu section .box .category {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 5px
-}
-
-@media(min-width: 768px) {
-    .is-home .l-menu section .box .category {
-        font-size:20px
-    }
-}
-
-.is-home .l-menu section .box .group {
-    margin-bottom: 4%
-}
-
-@media(min-width: 768px) {
-    .is-home .l-menu section .box .group {
-        display:-webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        margin-bottom: -4%;
-        -webkit-box-pack: start;
-        -webkit-justify-content: flex-start;
-        -ms-flex-pack: start;
-        justify-content: flex-start
-    }
-}
-
-.is-home .l-menu section .box .group>div {
-    margin-bottom: 4%
-}
-
-@media(min-width: 768px) {
-    .is-home .l-menu section .box .group>div {
-        width:32%;
-        /* margin-right: 2%; */
-        margin-bottom: 4%;
-        text-align: center;
-    }
-}
-
-@media(min-width: 768px) {
-    .is-home .l-menu section .box .group>div:nth-child(3n) {
-        margin-right:0
-    }
-}
-
-.is-home .l-menu section .box .group>div p {
-    font-size: 16px;
-    padding-top: 5px;
-    text-align: center;
-    line-height: 1.25
-}
-
-.is-home .l-menu section .box .group .slide-dots2 {
-    font-size: 0;
-    text-align: center
-}
-
-.is-home .l-menu section .box .group .slide-dots2 li {
-    display: inline-block;
-    width: 20px;
-    height: 3px;
-    margin: 0 4px;
-    background-color: rgba(204,204,204,.8)
-}
-
-.is-home .l-menu section .box .group .slide-dots2 li.slick-active {
-    background-color: #b51c25
-}
-
-.is-home .l-menu section .box .group .slide-dots2 li button {
-    display: none
-}
-
-.is-home .l-menu section .box .text {
-    font-size: 16px;
-    line-height: 2
-}
-
-@media(min-width: 768px) {
-    .is-home .l-menu section .box .text {
-        font-size:18px
-    }
-}
-
-.is-home .l-menu section .box .text strong {
-    display: block;
-    font-weight: bold;
-    font-size: 1.2em
-}
-
-.is-home .l-menu section .box .list {
-    font-size: 16px;
-    line-height: 1.5;
-    list-style: disc;
-    margin-bottom: -5px;
-    margin-left: 1.5em
-}
-
-@media(min-width: 768px) {
-    .is-home .l-menu section .box .list {
-        font-size:18px
-    }
-}
-
-.is-home .l-menu section .box .list li {
-    list-style: disc;
-    margin-bottom: 5px
-}
-
-.is-home .l-menu .e-text {
-    font-size: 12px;
-    text-align: right;
-    margin-top: -10px;
-    color: #222
-}
-
-@media(min-width: 768px) {
-    .is-home .l-menu .e-text {
-        font-size:14px
-    }
-}
-
-.is-home .l-sns p {
-    text-align: center;
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 15px
-}
-
-.is-home .l-sns a {
-    display: block;
-    max-width: 200px;
-    font-size: 18px;
-    background-color: #b51c25;
-    border: 1px solid #b51c25;
-    color: #fff;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 15px 20px;
-    border-radius: 4px;
-    text-align: center;
-    -webkit-transition: .2s;
-    transition: .2s
-}
-
-@media(min-width: 992px) {
-    .is-home .l-sns a:hover {
-        background-color:#fff;
-        color: #b51c25
-    }
-}
-
-.is-home .l-sns a i {
-    margin-right: 10px
-}
-
-.is-home .l-shop .l-box {
-    width: 100%;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto
-}
-
-@media(min-width: 768px) {
-    .is-home .l-shop .l-box {
-        display:-webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-        justify-content: space-between
-    }
-}
-
-@media(min-width: 768px) {
-    .is-home .l-shop .l-box .img {
-        width:40%
-    }
-}
-
-.is-home .l-shop .l-box .text {
-    line-height: 1.75;
-    font-size: 16px;
-    padding-top: 10px
-}
-
-@media(min-width: 768px) {
-    .is-home .l-shop .l-box .text {
-        padding-top:0;
-        font-size: 18px;
-        width: 58%
-    }
-}
-
-.is-home .l-shop .l-box .icon {
-    display: inline-block;
-    color: #b51c25;
-    font-size: 40px;
-    -webkit-transition: .2s;
-    transition: .2s
-}
-
-@media(min-width: 992px) {
-    .is-home .l-shop .l-box .icon:hover {
-        opacity:.8
-    }
-}
-
-.is-home .l-company .text {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto
-}
-
-.is-home .l-company .text dl {
-    margin-bottom: 10px;
-    line-height: 1.5;
-    width: 100%
-}
-
-@media(min-width: 768px) {
-    .is-home .l-company .text dl {
-        display:-webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-        justify-content: space-between
-    }
-}
-
-.is-home .l-company .text dl:last-child {
-    margin-bottom: 0
-}
-
-.is-home .l-company .text dl dt {
-    font-size: 16px;
-    font-weight: bold
-}
-
-@media(min-width: 768px) {
-    .is-home .l-company .text dl dt {
-        width:25%
-    }
-}
-
-.is-home .l-company .text dl dd {
-    font-size: 16px
-}
-
-@media(min-width: 768px) {
-    .is-home .l-company .text dl dd {
-        width:72%
-    }
-}
-
-.is-home .l-company .text dl dd a {
-    color: #b51c25;
-    text-decoration: underline
-}
-
-@media(min-width: 992px) {
-    .is-home .l-company .text dl dd a:hover {
-        text-decoration:none
-    }
-}
-
-
-/* ここから自作 */
-
-.imageFood{
-    max-width:100%;
-    max-height: 1500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-
- /* モーダルのスタイル */
- .modal {
-    display: none; /* 最初は非表示 */
-    position: fixed;
-    top: 1;
-    left: 5;
-    width: 100%;
-    height: 100%;   
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景色 */
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 40% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 500px
-}
-
-.modal-dialog{
-    width: 100%;
-    height: 100%;
-}
-
-.close {
-float: right;
-cursor: pointer;
-}
-.modalbtn{
-text-align: right;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* 画面の高さいっぱいに広げる */
-}
-main {
-    flex: 1; /* メインコンテンツが残りの高さいっぱいに広がる */
-}
-footer {
-    margin-top: auto; /* 上の余白を自動的に埋める */
-}
-
-/*# sourceMappingURL=style.css.map */
-
-
-</style>
-<body class="is-home">
-	<!-- <header class="l-header" style= "background-color:honeydew"> -->
-    <header class="l-header">
-		<div class="l-header__inner">
-			<h1 class="l-header__logo">
-				<a href="">
-					<img class="scrollImage" src="{{asset('storage/img/logo.png')}}" alt="HIROROGU">
-                   
-				</a>
-			</h1>
-			<div class="l-header__global-navi" >
-				<nav class="l-global-navi">
-					<ul class="l-global-navi__list">
-						<li><a href="#about" class="js-anker">店舗検索</a></li>						
-						<li><a href="#menu" class="js-anker">MENU</a></li>
-						<li><a href="#shop" class="js-anker">店舗情報</a></li>
-						<li><a href="#company" class="js-anker">お問い合わせ</a></li>
-						<!-- <li class="sns"> -->
-							<!-- <a href="https://www.instagram.com/hitowan098/" target="_blank" class="icon">
-								<i class="fa-brands fa-instagram"></i>
-							</a> -->
-						<!-- </li> -->
-					</ul>
-				</nav>
-			</div>
-			<div id="js-hamburger" class="l-hamburger">
-				<span class="l-hamburger__item e-first"></span>
-				<span class="l-hamburger__item e-second"></span>
-				<span class="l-hamburger__item e-third"></span>
-			</div>
-		</div>
-	</header>
-	<div class="l-navigation-open-bg"></div>
-
-
-	<main class="l-main">
-		
-        @yield('content')
-
-	</main>
-
-<a href="#" class="page-top js-smooth">
-	<i class="fa-solid fa-circle-chevron-up"></i>
-</a>
-
-
-<!-- <footer style= "background-color:honeydew"> -->
-<footer>
-	<small> &copy; © SUNAGAWA.Food Site</small>
-</footer>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDorbt3hfftFdXczBTHco6aB4sI8Q4LIu4&callback=initMap" async defer></script>
-<!-- <script src="/assets/js/slick.min.js"></script>
-<script src="/assets/js/script.js"></script> -->
-
-<script>
-
-    $(document).ready(function(){
-        var currentIndex = 0; // 現在の画像のインデックス
-        var images = $(".imageFood"); // 画像のクラスを持つ要素
-
-        setInterval(function() {
-        // 現在の画像を非表示にし、次の画像を表示する
-        images.eq(currentIndex).fadeOut();
-        currentIndex = (currentIndex + 1) % images.length;
-        images.eq(currentIndex).fadeIn();
-        }, 5000); // 2秒ごとに画像を切り替える
-    })
-
-    function initMap() {
-        // マップを表示する位置の緯度経度
-        var myLatLng = { lat: 26.2124, lng: 127.6809 }; // 例: 那覇市
-
-        // マップを表示する div 要素を取得
-        var mapDiv = document.getElementById('map');
-
-        // マップを作成
-        var map = new google.maps.Map(mapDiv, {
-            center: myLatLng,
-            zoom: 13 // ズームレベル
-        });
-
-        // マーカーを追加（オプション）
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'マーカータイトル'
-        });
-    }
-
-    $('.gazo_open').click(function(){
-
-        // 画像ファイルパス
-        var gazoPath = $(this).data('gazo');
-       
-        // 画像を作成し、属性を設定
-        var gazo = $("<img>").attr("src", gazoPath);
-
-        // 画像をモーダル内に追加
-        $('.modal-gazo').html(gazo);
-        // クリックしたメニュー名を取得
-        var menu = $(this).data("menu_name");       
-
-        //　メニューをモーダル内に追加
-        $('.modal-menu_name').html(menu);
-
-        // 店舗情報の場合は価格を取得しない
-        if($(this).data("price") !== ""){
-            // クリックした価格を取得
-            var price = $(this).data("price");
-
-            //　価格をモーダル内に追加
-            $('.modal-price').html(price+"円");
-
+        <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#7952b3">
+
+
+    <style>
+
+      /* フッター */
+      footer{
+        background-color: black;
+        color:#FFFFFF;
+        margin-top:10px;
+        height:40px;
+      }
+       /* 画面上の画像 */
+       .bd-placeholder-img {
+        font-size: 100px;        
+        max-width:800px;
+        max-height:600px;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        display: block;
+        margin: auto;
+            
+      }
+      @media (max-width: 768px) {
+        .bd-placeholder-img {
+          font-size: 3.5rem;
+          max-width:800px;
+          max-height:350px;
+          margin-left:0%;
+          margin-right:0%;          
         }
+      }
+      /* 画面背景 */
+      body{        
+        /* background-image: url('{{asset('storage/img/loca_back_2.jpg')}}'); */
+        background-image: url('{{asset('storage/img/loca_back_1.jpg')}}');
+        background-size: cover;               /* 全画面 */
+        background-attachment: fixed;         /* 固定 */
+        background-position: center center;   /* 縦横中央 */
+        /* margin:0;  */
+        width:100%;
+        height:100%;
+                   
+      }
 
+      /* headerロゴ */
+      .logo{
+        max-width:50px;
+        max-height:50px;
+        border-radius: 50%; /* 丸くするための設定 */
+        overflow: hidden; /* 丸くクリップするために必要 */
+      }
+
+
+      /* header */
+      header{
+        width:auto;
+      }
+
+
+
+      p {
+        font-size:40px;
+      }
+
+      @media (max-width: 768px) {
+        p {
+          font-size: 20px;         
+        }
+      }
+
+
+
+      /* pタグのデザイン */
+      p .lead{
+        font-size:60px;
+        font-family: 'Sacramento', cursive;
         
+        
+      }
 
-        // クリックしたメニュー情報名を取得
-        var setumei = $(this).data("setumei");
-        //　メニュー説明をモーダル内に追加
-        $('.modal-setumei').html(setumei);
-
-
-        $('#imageFood').css({
-            // width: 1000 +"px",
-            // height: 800 +"px"
-
-        })
+      @media (max-width: 768px) {
+        p .lead {
+          font-size: 30px;        
+        }
+      }
 
 
-        // モーダルを開く
-        $('#modal').css("display","block");  
-
-    })
-
-    $('#close').click(function(){
-        // モーダルを閉じる
-        $('#modal').css("display","none");  
-    })
 
 
-</script>
+      /* 見出しh2 */
+      .featurette-heading{
+            
+        margin-top:3%;
+        margin-bottom:5%;
+        /* font-family:"Arial","メイリオ" */
+        font-family:"Impact";
+        /* font-family: "Oswald", sans-serif; */
+        letter-spacing: .1em;
+        font-size:80px;
+        color:black;
 
-</body>
+       
+      }
+
+      @media (max-width: 768px) {
+        .featurette-heading {
+          /* text-align:center; */
+          font-size:40px;
+        }
+      }
+
+
+      /* 画像下のnav */
+      nav {
+          display: flex;
+          justify-content: center;
+          /* ナビゲーションの背景色を追加（必要に応じて変更） */
+          /* background-color: #333;  */
+      }
+
+      nav a {
+          padding: 10px 20px;
+          /* ナビゲーションリンクの文字色を白に設定（必要に応じて変更） */
+          color: #333; 
+          /* ナビゲーションリンクの下線を削除 */
+          text-decoration: none; 
+      }
+
+      .explanation{
+        text-align: center;
+      }
+
+      .horizontal-list {
+          list-style: none;
+          padding: 45px;
+          margin: 0px;
+          display: flex;
+          justify-content: center;
+          margin-top:10px;
+          margin-bottom:10px;
+          background-color:white;
+         
+      }
+
+      .horizontal-list li {
+          margin-right: 20px; /* アイテム間の余白 */         
+      }
+
+      .horizontal-list li:last-child {
+          margin-right: 0; /* 最後のアイテムに余白を適用しない */
+      }
+
+      /* 通常のスタイル（PC用） */
+      .pc_nav {
+        display: block; /* 通常は表示する */
+      }
+
+      /* スマートフォン用のスタイル */
+      @media only screen and (max-width: 1200px) {
+        .pc_nav {
+          display: none; /* スマートフォンの場合は非表示にする */
+        }
+      }
+
+
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header> 
+  <div class="menu-toggle">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img class="logo" src="{{asset('storage/img/logo.jpg')}}"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">      
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>          
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/exterior">外観</a>
+          </li>          -->
+          <li class="nav-item">           
+            <a class="nav-link active" aria-current="page" href="/menu">Menu List</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/activity">遊び</a>
+          </li> -->
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">店舗情報</a>
+          </li> -->
+        </ul>       
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <nav class="pc_nav">
+    <ul class="horizontal-list">
+      <li>
+        <a class="link-nav" href="">Home</a>
+      </li>
+      <li>
+        <a href="#exterior">Exterior</a>
+      </li>
+      <li>
+        <a href="#menu">Menu</a>
+      </li>
+      <li>
+        <a href="#activity">Activity</a>
+      </li>
+      <li>
+        <a href="#shop_guide">Shop Guide</a>
+      </li>
+    </ul>
+  </nav>
+</div> 
+
+<main>
+  
+    @yield('content')
+  <!-- </div>  -->
+  <!-- FOOTER -->
+  
+</main>
+
+<!-- <footer class="container">    
+    <p style="text-align:center;">&copy; 2023 Company, Inc</p>
+</footer> -->
+<footer style="text-align:center;">
+	<small>&copy; 2023 Company, Inc</small>
+</footer>
+    <!-- <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+
+      
+  </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 地図 -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDorbt3hfftFdXczBTHco6aB4sI8Q4LIu4&callback=initMap" async defer></script>
+<script>
+function initMap() {
+    // マップを表示する位置の緯度経度
+    var myLatLng = { lat: 26.2124, lng: 127.6809 }; // 例: 那覇市
+
+    // マップを表示する div 要素を取得
+    var mapDiv = document.getElementById('map');
+
+    // マップを作成
+    var map = new google.maps.Map(mapDiv, {
+        center: myLatLng,
+        zoom: 13 // ズームレベル
+    });
+
+    // マーカーを追加（オプション）
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'マーカータイトル'
+    });
+}
+$(document).ready(function () {
+    $('.menu-toggle').click(function () {
+        $('.class').slideToggle();
+    });
+});
+</script>
